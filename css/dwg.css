@@ -1,0 +1,248 @@
+/******************************************
+    DALLAS WOMEN'S GALLERY TIMELINE
+    (ported from the WordPress plugin's dwg.css; its other rules duplicated tap.css)
+/*****************************************/
+
+#tap-ephemera-timeline {
+    display: flex;
+    flex-direction: column;
+    min-width: 1000px;
+    max-width: 1300px;
+    margin-bottom: 50px;
+}
+
+#tap-ephemera-timeline h3 {
+    font-family: Inter, sans-serif;
+    font-weight: normal;
+    font-size: 14pt;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+#ephemera-timeline-top-bar {
+    position: sticky;
+    height: 40px;
+    width: 100%;
+    top: 0;
+    background-color: #F2EFE8;
+    z-index: 800;
+}
+
+#ephemera-timeline-filter-indicator {
+    margin-left: 20px;
+}
+.ephemera-timeline-filter {
+    font-size: 16px;
+}
+.ephemera-timeline-filter-clear, .ephemera-timeline-filter-clear:hover {
+    color: #59554D !important;
+    text-decoration: none !important;
+}
+
+#ephemera-timeline-top-bar-info-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#ephemera-timeline-top-bar-year-menu {
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    cursor: pointer;
+}
+
+#ephemera-timeline-top-bar-title {
+    position: absolute;
+    transform: translateX(-50%);
+    left: 75%;
+}
+
+.ephemera-timeline-era {
+    min-height: 100px;
+    width: 100%;
+    margin: 0px;
+}
+
+.ephemera-timeline-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: sticky;
+    top: 40px;
+    height: 40px;
+    z-index: 500;
+}
+
+.ephemera-timeline-header-director {
+    text-align: right;
+    padding-right: 30px;
+}
+
+.ephemera-timeline-header-address {
+    padding-left: 20px;
+}
+
+.ephemera-timeline-event {
+    width: calc(75% - 41px);
+    margin: 40px 0 0 40px;
+}
+
+.ephemera-timeline-event.beneath-header {
+    margin-top: 0;
+}
+
+/* when jumping to a year, land the event just below the sticky top bar and gallery header (40px each). the
+   timeline's event observer ignores this same strip, so events hidden beneath it don't count as visible */
+.ephemera-timeline-event {
+    scroll-margin-top: 80px;
+}
+
+.ephemera-timeline-event-header-artists-container {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    height: 100%;
+    width: 100%;
+}
+
+.ephemera-timeline-event-header {
+    display: grid;
+    grid-template-columns: calc(50% + 10px) calc(50% - 10px);
+    column-gap: 20px;
+    width: 100%;
+    mix-blend-mode: multiply;
+    background-color: #F2EFE8;
+    align-items: start;
+    padding: 10px 0;
+}
+
+.event-header-title-column, .event-header-date-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.event-header-date-column {
+    align-items: end;
+    margin-right: 10px;
+}
+
+.event-header-title-column {
+    align-items: start;
+    margin-left: 10px;
+    padding-right: 20px;
+}
+
+.event-header-date-column span, .event-header-title-column span {
+    color: #59554D;
+    font-family: Inter, sans-serif;
+    font-size: 10pt;
+}
+
+.ephemera-timeline-event-body {
+    display: grid;
+    grid-template-columns: 25% 75%;
+    width: 100%;
+}
+
+.ephemera-timeline-event-postcard-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F2EFE8;
+    padding: 10px 0 10px 0;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.postcard-image {
+    display: block;
+}
+
+.ephemera-timeline-event-artists-container {
+    padding-bottom: 3px;
+}
+
+.ephemera-timeline-event-agent {
+    display: grid;
+    grid-template-columns: calc(50% - 20px) 1fr;
+    column-gap: 10px;
+    mix-blend-mode: multiply;
+    position: relative;
+    left: 40px;
+    height: 30px;
+    border-radius: 5px;
+    margin: 3px 0 0 0;
+    align-items: center;
+}
+
+.event-agent-name {
+    font-family: Inter, sans-serif;
+    font-size: 14pt;
+    color: #59554D;
+    text-align: right;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.artifact-marker-holder {
+    display: flex;
+    margin-left: 10px;
+    align-items: center;
+}
+
+.artifact-tray-expander {
+    cursor: pointer;
+    display: inline-block;
+    mix-blend-mode: multiply;
+    height: 7px;
+    width: auto;
+    margin: 0 8px 0 0;
+}
+
+.ephemera-timeline-event-agent-gallery {
+    margin-left: 40px;
+    margin-top: 3px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    overflow: clip;
+    gap: 3px;
+    flex-wrap: wrap;
+    padding: 3px;
+}
+
+.gallery-placeholder {
+    height: 110px;
+    width: 5px;
+}
+
+.ephemera-timeline-event-agent-gallery > img {
+    min-height: 110px;
+    border-radius: 5px;
+}
+
+.artifact-marker {
+    display: inline-block;
+    width: 10px;
+    height: 30px;
+    margin: 0 4px 0 0;
+    mix-blend-mode: multiply;
+}
+
+.ephemera-timeline-event-header-artists-footer {
+    background-color: #F2EFE8;
+    mix-blend-mode: multiply;
+    height: 40px;
+}
+
+.admin-event {
+    background-color: rgba(186, 184, 178, .5);
+}
+.no-agents {
+    height: 0;
+    padding: 0;
+}
