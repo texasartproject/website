@@ -147,7 +147,7 @@
                 }
 
                 appendToEl(artGrid, `
-                    <div id="tap-artgrid-cell-${artwork.id}" class="col-md-4 tap-artgrid-cell d-none" data-artwork-id="${artwork.id}">
+                    <div id="tap-artgrid-cell-${artwork.id}" class="${thumbnailCellClasses.join(' ')} tap-artgrid-cell d-none" data-artwork-id="${artwork.id}">
                         <img
                             id="tap-artgrid-img-${artwork.id}"
                             src="../img/image-loading.svg"
@@ -173,15 +173,20 @@
         })
     })
 
+    // thumbnails are two to a row on phones and three on wider screens; the featured artwork gets a full row
+    const thumbnailCellClasses = ['col-6', 'col-md-4']
+    const featuredCellClass = 'col-12'
+
     function featureImage(e) {
         let cell = e.target.closest('.tap-artgrid-cell')
         if (!cell.classList.contains('featured')) {
             let featuredImg = getElWithQuery('.tap-artgrid-img.featured')
             let featuredCell = getElWithQuery('.tap-artgrid-cell.featured')
             if (featuredImg) {
-                featuredCell.classList.remove('col-md-12')
-                featuredCell.classList.add('col-md-4')
-                renderImage(featuredImg, parseInt(cell.clientWidth))
+                featuredCell.classList.remove(featuredCellClass)
+                featuredCell.classList.add(...thumbnailCellClasses)
+                // the clicked cell is still a thumbnail, so its image has the thumbnail size
+                renderImage(featuredImg, parseInt(cell.querySelector('.tap-artgrid-img').getBoundingClientRect().width))
                 getElWithQuery('.tap-artgrid-metadata').remove()
                 featuredCell.classList.remove('featured')
                 featuredImg.classList.remove('featured')
@@ -206,8 +211,8 @@
                 </div>
             `)
 
-            cell.classList.remove('col-md-4')
-            cell.classList.add('col-sm-12')
+            cell.classList.remove(...thumbnailCellClasses)
+            cell.classList.add(featuredCellClass)
             cell.classList.add('featured')
             img.classList.add('featured')
             setTimeout(function () {
